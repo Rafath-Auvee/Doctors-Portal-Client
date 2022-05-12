@@ -1,10 +1,20 @@
 import './App.css';
+import Navbar from './Pages/Shared/Navbar.js'
+import { Routes, Route, Link } from "react-router-dom";
+import Home from './Pages/Home/Home.js'
+import About from './Pages/About/About.js'
+import Login from "./Pages/Authencation/Login/Login.js"
+
 
 function App() {
   return (
     <div className="">
-      <h1 className="bg-black text-red-500">Hello</h1>
-      <button class="btn btn-primary">One</button>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="login" element={<Login />} />
+      </Routes>
     </div>
   );
 }
