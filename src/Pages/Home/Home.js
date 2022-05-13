@@ -1,9 +1,13 @@
-import React from 'react';
-import Banner from "./Banner.js"
+import React from "react";
+import Banner from "./Banner.js";
+import Info from "./Info/Info.js";
+
+
 const Home = () => {
   return (
     <div>
-      <Banner/>
+      <Banner />
+      <Info />
     </div>
   );
 };
