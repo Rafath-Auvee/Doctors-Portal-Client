@@ -9,14 +9,14 @@ import Footer from "./Footer/Footer.js"
 
 const Home = () => {
   return (
-    <div className="px-12">
-      <Banner />
-      <Info />
-      <Services/>
+    <div >
+      <Banner className="px-12"/>
+      <Info className="px-12"/>
+      <Services className="px-12"/>
       <MakeAppointment/>
-      <Testimonials/>
+      <Testimonials className="px-12"/>
       <Contact/>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
