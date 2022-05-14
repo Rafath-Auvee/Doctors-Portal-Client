@@ -7,6 +7,7 @@ const InfoCard = ({img, bgClass, title}) => {
         <figure className="pl-5">
           <img
             src={img}
+            className="pt-6 lg:pt-0"
             alt="Movie"
           />
                     
