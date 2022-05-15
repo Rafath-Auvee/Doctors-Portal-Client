@@ -1,0 +1,6 @@
+{
+  "autoimport.absolute": true,
+  "autoimport.doubleQuotes": true,
+  "editor.foldingImportsByDefault": true,
+  "autoimport.showNotifications": true
+}
