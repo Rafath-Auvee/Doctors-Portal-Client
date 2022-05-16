@@ -22,7 +22,7 @@ const AppointmentCard = ({ date }) => {
           <Services key={service._id} service={service} setTreatment={setTreatment}/>
         ))}
       </div>
-      {treatment && <ModalAppointment treatment={treatment}/>}
+      {treatment && <ModalAppointment date={date} treatment={treatment} setTreatment={setTreatment}/>}
     </div>
   );
 };
