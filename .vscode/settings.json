@@ -2,5 +2,12 @@
   "autoimport.absolute": true,
   "autoimport.doubleQuotes": true,
   "editor.foldingImportsByDefault": true,
-  "autoimport.showNotifications": true
+  "autoimport.showNotifications": true,
+  "editor.wordWrap": "on",
+  "editor.codeActionsOnSave": {
+    
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
 }
