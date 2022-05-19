@@ -1,14 +1,33 @@
 import React from "react";
+import axios from "axios";
 import { format } from "date-fns";
-const ModalAppointment = ({ treatment, date , setTreatment }) => {
-  const {_id, name, slots } = treatment;
-  let i = 0;
-  const handleBooking = e => {
-    e.preventDefault()
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+const ModalAppointment = ({ treatment, date, setTreatment }) => {
+  const { _id, name, slots } = treatment;
+  const [user, loading, error] = useAuthState(auth);
+
+  const handleBooking = (e) => {
+    e.preventDefault();
     const slot = e.target.slot.value;
-    console.log(_id, name, slot)
-    setTreatment(null)
-  }
+    const formattedDate = format(date, "PP");
+    const booking = {
+      treatmentId: _id,
+      treatment: name,
+      date: formattedDate,
+      slot,
+      patient: user.email,
+      patientName: user.displayName,
+      phone: e.target.phone.value,
+    };
+
+    axios.post("http://localhost:5000/booking", booking).then((data) => {
+      setTreatment(null);
+    });
+
+    console.log(_id, name, slot);
+  };
+
   return (
     <div>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -20,45 +39,53 @@ const ModalAppointment = ({ treatment, date , setTreatment }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold text-secondary">Booking Name: {name}</h3>
+          <h3 className="text-lg font-bold text-secondary">
+            Booking Name: {name}
+          </h3>
           <form
             onSubmit={handleBooking}
-            action=""
-            className="grid grid-cols-1 gap-5 mt-4 justify-items-center "
+            className="grid grid-cols-1 gap-3 justify-items-center mt-2"
           >
             <input
               type="text"
               disabled
               value={format(date, "PP")}
-              className="input input-bordered input-secondary w-full max-w-xs "
+              className="input input-bordered w-full max-w-xs"
             />
-            <select name="slot" className="select select-secondary w-full max-w-xs">
-              {
-                slots.map(slot=> <option key={i++} value={slot}>{slot}</option>)
-              }
+            <select
+              name="slot"
+              className="select select-bordered w-full max-w-xs"
+            >
+              {slots.map((slot, index) => (
+                <option key={index} value={slot}>
+                  {slot}
+                </option>
+              ))}
             </select>
             <input
               type="text"
-              placeholder="Your Name"
               name="name"
-              className="input input-bordered input-secondary w-full max-w-xs"
+              disabled
+              value={user?.displayName || ""}
+              className="input input-bordered w-full max-w-xs"
             />
             <input
               type="email"
               name="email"
-              placeholder="Email Address"
-              className="input input-bordered input-secondary w-full max-w-xs"
+              disabled
+              value={user?.email || ""}
+              className="input input-bordered w-full max-w-xs"
             />
             <input
-              type="number"
+              type="text"
               name="phone"
               placeholder="Phone Number"
-              className="input input-bordered input-secondary w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
             />
             <input
               type="submit"
               value="Submit"
-              className="btn btn-bordered btn-secondary w-full max-w-xs"
+              className="btn btn-secondary w-full max-w-xs"
             />
           </form>
         </div>
