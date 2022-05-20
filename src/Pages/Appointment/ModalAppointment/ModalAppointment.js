@@ -29,7 +29,7 @@ const ModalAppointment = ({ treatment, date, setTreatment }) => {
       }  
       else
       {
-        toast(`Already have an appointment on ${data.data?.booking?.date} at ${data.data?.booking?.slot}`)
+        toast.warning(`Already have an appointment on ${data.data?.booking?.date} at ${data.data?.booking?.slot}`)
       }
       console.log(data.success)
       console.log(data)
