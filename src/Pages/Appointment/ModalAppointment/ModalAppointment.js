@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { format } from "date-fns";
+import { toast } from 'react-toastify';
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 const ModalAppointment = ({ treatment, date, setTreatment }) => {
@@ -22,7 +23,17 @@ const ModalAppointment = ({ treatment, date, setTreatment }) => {
     };
 
     axios.post("http://localhost:5000/booking", booking).then((data) => {
-      setTreatment(null);
+      if(data.data?.success)
+      {
+        toast.success(`Appointment is set, ${formattedDate} at ${slot}`)
+      }  
+      else
+      {
+        toast(`Already have an appointment on ${data.data?.booking?.date} at ${data.data?.booking?.slot}`)
+      }
+      console.log(data.success)
+      console.log(data)
+    setTreatment(null);
     });
 
     console.log(_id, name, slot);
