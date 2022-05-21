@@ -11,11 +11,13 @@ import RequireAuth from "./Pages/Authencation/RequiredAuth/RequiredAuth.js";
 import Contact from "./Pages/Contact/Contact.js";
 import "react-toastify/dist/ReactToastify.css";
 
-import Dashboard from './Pages/Dashboard/Dashboard.js';
-import MyAppointments from './Pages/Dashboard/MyAppointments';
-import MyReview from './Pages/Dashboard/MyReview';
-import MyHistory from './Pages/Dashboard/MyHistory';
+import Dashboard from "./Pages/Dashboard/Dashboard.js";
+import MyAppointments from "./Pages/Dashboard/MyAppointments";
+import MyReview from "./Pages/Dashboard/MyReview";
+import MyHistory from "./Pages/Dashboard/MyHistory";
+import Users from "./Pages/Dashboard/Users.js"
 
+import RequireAdmin from "./Pages/Authencation/RequireAdmin/RequireAdmin.js"
 function App() {
   return (
     <div className="max-w-7xl mx-auto px-12">
@@ -43,6 +45,7 @@ function App() {
           }
         >
           <Route index element={<MyAppointments></MyAppointments>}></Route>
+          <Route path="users" element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route path="history" element={<MyHistory></MyHistory>}></Route>
         </Route>
