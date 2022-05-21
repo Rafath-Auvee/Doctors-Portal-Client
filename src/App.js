@@ -15,9 +15,12 @@ import Dashboard from "./Pages/Dashboard/Dashboard.js";
 import MyAppointments from "./Pages/Dashboard/MyAppointments";
 import MyReview from "./Pages/Dashboard/MyReview";
 import MyHistory from "./Pages/Dashboard/MyHistory";
-import Users from "./Pages/Dashboard/Users.js"
+import Users from "./Pages/Dashboard/Users.js";
 
-import RequireAdmin from "./Pages/Authencation/RequireAdmin/RequireAdmin.js"
+import ManageDoctors from './Pages/Dashboard/ManageDoctors'
+import AddDoctor from './Pages/Dashboard/AddDoctor';
+
+import RequireAdmin from "./Pages/Authencation/RequireAdmin/RequireAdmin.js";
 function App() {
   return (
     <div className="max-w-7xl mx-auto px-12">
@@ -45,9 +48,18 @@ function App() {
           }
         >
           <Route index element={<MyAppointments></MyAppointments>}></Route>
-          <Route path="users" element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+          <Route
+            path="users"
+            element={
+              <RequireAdmin>
+                <Users></Users>
+              </RequireAdmin>
+            }
+          ></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route path="history" element={<MyHistory></MyHistory>}></Route>
+          <Route path="addDoctor" element={<RequireAdmin><AddDoctor></AddDoctor></RequireAdmin>}></Route>
+          <Route path="manageDoctor" element={<RequireAdmin><ManageDoctors></ManageDoctors></RequireAdmin>}></Route>
         </Route>
       </Routes>
       <ToastContainer
