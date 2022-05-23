@@ -21,6 +21,9 @@ import ManageDoctors from './Pages/Dashboard/ManageDoctors'
 import AddDoctor from './Pages/Dashboard/AddDoctor';
 
 import RequireAdmin from "./Pages/Authencation/RequireAdmin/RequireAdmin.js";
+
+import Payment from './Pages/Dashboard/Payment.js'
+
 function App() {
   return (
     <div className="max-w-7xl mx-auto px-12">
@@ -56,6 +59,7 @@ function App() {
               </RequireAdmin>
             }
           ></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route path="history" element={<MyHistory></MyHistory>}></Route>
           <Route path="addDoctor" element={<RequireAdmin><AddDoctor></AddDoctor></RequireAdmin>}></Route>
