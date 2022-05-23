@@ -33,8 +33,8 @@ const MyAppointments = () => {
   return (
     <div>
         <h2>My Appointments: {appointments.length}</h2>
-        <div className="overflow-x-auto">
-            <table className="table w-full">
+        <div class="overflow-x-auto">
+            <table class="table w-full">
                 <thead>
                     <tr>
                         <th></th>
@@ -54,11 +54,11 @@ const MyAppointments = () => {
                             <td>{a.slot}</td>
                             <td>{a.treatment}</td>
                             <td>
-                                {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
+                                {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-warning'>pay</button></Link>}
                                 {(a.price && a.paid) && <div>
-                                    <p><span className='text-success'>Paid</span></p>
-                                    <p>Transaction id: <span className='text-success'>{a.transactionId}</span></p>
+                                    <p><span className='text-black text-bold btn btn-xs btn-success'>Paid</span></p>
                                 </div>}
+                                    {/* <p>Transaction id: <span className='text-success'>{a.transactionId}</span></p> */}
                             </td>
                         </tr>)
                     }
