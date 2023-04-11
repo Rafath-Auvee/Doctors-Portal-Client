@@ -11,7 +11,7 @@ const AppointmentCard = ({ date }) => {
   const queryClient = new QueryClient()
 
   const { data: services, isLoading, refetch } = useQuery(["available", formattedDate], () =>
-    fetch(`https://doctors-portal-auvee.herokuapp.com/available?date=${formattedDate}`).then((res) =>
+    fetch(`https://doctors-portal-server-sage-psi.vercel.app/available?date=${formattedDate}`).then((res) =>
       res.json()
     )
   );

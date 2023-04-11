@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading/Loading.js';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch('https://doctors-portal-auvee.herokuapp.com/service').then(res => res.json()))
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://doctors-portal-server-sage-psi.vercel.app/service').then(res => res.json()))
 
     const imageStorageKey='f3f22ee15d3ef328ecec838de6b26a6d';
 
@@ -39,7 +39,7 @@ const AddDoctor = () => {
                     img: img
                 }
                 // send to your database 
-                fetch('https://doctors-portal-auvee.herokuapp.com/doctor', {
+                fetch('https://doctors-portal-server-sage-psi.vercel.app/doctor', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

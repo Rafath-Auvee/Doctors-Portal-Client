@@ -9,7 +9,7 @@ const MyAppointments = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
-      fetch(`https://doctors-portal-auvee.herokuapp.com/booking?patient=${user.email}`, {
+      fetch(`https://doctors-portal-server-sage-psi.vercel.app/booking?patient=${user.email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,

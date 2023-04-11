@@ -48,8 +48,7 @@ function App() {
             <RequireAuth>
               <Dashboard />
             </RequireAuth>
-          }
-        >
+          }>
           <Route index element={<MyAppointments></MyAppointments>}></Route>
           <Route
             path="users"

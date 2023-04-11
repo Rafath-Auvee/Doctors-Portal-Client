@@ -23,7 +23,7 @@ const ModalAppointment = ({ treatment, date, setTreatment, refetch }) => {
       phone: e.target.phone.value,
     };
 
-    axios.post("https://doctors-portal-auvee.herokuapp.com/booking", booking).then((data) => {
+    axios.post("https://doctors-portal-server-sage-psi.vercel.app/booking", booking).then((data) => {
       if (data.data?.success) {
         toast.success(`Appointment is set, ${formattedDate} at ${slot}`);
       } else {

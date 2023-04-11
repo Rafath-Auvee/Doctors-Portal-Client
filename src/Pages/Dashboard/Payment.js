@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_WHT2vO4EewwarASjGqH6HvBk');
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `https://doctors-portal-auvee.herokuapp.com/booking/${id}`;
+    const url = `https://doctors-portal-server-sage-psi.vercel.app/booking/${id}`;
 
     const { data: appointment, isLoading } = useQuery(['booking', id], () => fetch(url, {
         method: 'GET',
